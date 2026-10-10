@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Atif Ahmad Khan | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F7FB; --surface:#FFFFFF; --ink:#151A3C; --muted:#5A6082; --line:#E3E6F2;
+  --accent:#3640D9; --accent-ink:#FFFFFF; --accent-soft:#E9EAFB;
+  --safe:#0E9F6E; --safe-soft:#E3F6EE; --risk:#D93A41; --risk-soft:#FCE8E9;
+  --shadow:0 1px 2px rgba(21,26,60,.06),0 8px 24px rgba(21,26,60,.06);
+  --head:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1226; --surface:#181C3A; --ink:#EEF0FF; --muted:#A0A6CC; --line:#2A2F57;
+    --accent:#8A92FF; --accent-ink:#0F1226; --accent-soft:#232859;
+    --safe:#3DD6A0; --safe-soft:#12362E; --risk:#FF7A80; --risk-soft:#43202A;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1226; --surface:#181C3A; --ink:#EEF0FF; --muted:#A0A6CC; --line:#2A2F57;
+  --accent:#8A92FF; --accent-ink:#0F1226; --accent-soft:#232859;
+  --safe:#3DD6A0; --safe-soft:#12362E; --risk:#FF7A80; --risk-soft:#43202A;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:calc(76px + env(safe-area-inset-top,0px))}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1120px,100% - 40px);margin-inline:auto}
+section{padding:96px 0}
+h1,h2,h3{font-family:var(--head);line-height:1.1;letter-spacing:-.02em}
+h2{font-size:clamp(30px,4.5vw,44px);font-weight:800;margin-bottom:12px}
+.lead{color:var(--muted);max-width:60ch;margin-bottom:44px}
+
+/* Header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-family:var(--head);font-weight:800;font-size:20px;text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo i{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--accent);color:var(--accent-ink);font-style:normal;font-size:15px}
+nav ul{display:flex;gap:4px;list-style:none;padding:0}
+nav a{display:block;padding:8px 12px;border-radius:999px;text-decoration:none;font-weight:500;font-size:15px;color:var(--muted);transition:background .2s,color .2s}
+nav a:hover{color:var(--ink);background:var(--accent-soft)}
+nav a.active{color:var(--accent);background:var(--accent-soft)}
+.tools{display:flex;gap:8px}
+.icon-btn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;display:grid;place-items:center;font-size:18px}
+#menuBtn{display:none}
+@media (max-width:1000px){
+  #menuBtn{display:grid}
+  nav{position:absolute;left:0;right:0;top:68px;background:var(--bg);border-bottom:1px solid var(--line);display:none}
+  nav.open{display:block}
+  nav ul{flex-direction:column;padding:12px 20px 20px}
+  nav a{padding:12px 14px;font-size:17px}
+}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:12px;font-weight:600;font-size:16px;text-decoration:none;border:1.5px solid var(--accent);cursor:pointer;font-family:inherit;transition:transform .2s,box-shadow .2s,background .2s}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+
+/* Hero */
+#home{padding:72px 0 88px}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.me{display:flex;align-items:center;gap:16px;margin-bottom:28px}
+.avatar{position:relative;width:104px;height:104px;border-radius:50%;border:3px solid var(--surface);box-shadow:0 0 0 2px var(--accent);background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-family:var(--head);font-weight:800;font-size:28px;overflow:hidden;padding:0}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.avatar span{position:absolute;bottom:0;left:0;right:0;font:600 10px var(--body);background:rgba(21,26,60,.72);color:#fff;padding:2px 0 4px;text-align:center}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:500;color:var(--muted)}
+.status b{width:9px;height:9px;border-radius:50%;background:var(--safe);box-shadow:0 0 0 0 var(--safe);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
+h1{font-size:clamp(40px,6.4vw,68px);font-weight:800;margin-bottom:16px}
+.role{font-family:var(--head);font-weight:700;font-size:clamp(20px,2.6vw,26px);color:var(--accent);height:1.5em;margin-bottom:20px;overflow:hidden}
+.role span{display:block;transition:transform .45s ease,opacity .45s ease}
+.role span.out{transform:translateY(-100%);opacity:0}
+.role span.in{transform:translateY(100%);opacity:0;transition:none}
+.hero p.about-line{color:var(--muted);max-width:50ch;margin-bottom:32px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+
+/* Live fraud feed */
+.feed{background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);overflow:hidden}
+.feed-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line);font-weight:600}
+.feed-head small{display:block;font-weight:400;color:var(--muted);font-size:13px;line-height:1.3}
+.counts{display:flex;gap:14px;font-size:13px;font-weight:600;white-space:nowrap}
+.counts em{font-style:normal;color:var(--risk)}
+.rows{list-style:none;padding:8px;height:372px;overflow:hidden;display:flex;flex-direction:column;gap:6px}
+.tx{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:10px 12px;border-radius:12px;border:1px solid transparent;background:var(--bg);animation:slide .5s ease both}
+.tx.bad{background:var(--risk-soft);border-color:var(--risk)}
+@keyframes slide{from{opacity:0;transform:translateY(-14px)}}
+.tag{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-size:16px;background:var(--safe-soft);color:var(--safe);font-weight:700}
+.tx.bad .tag{background:var(--risk);color:#fff}
+.tx strong{display:block;font-size:15px;line-height:1.3}
+.tx small{color:var(--muted);font-size:13px;line-height:1.3;display:block}
+.tx.bad small{color:var(--risk)}
+.amt{font-family:var(--head);font-weight:700;text-align:right;font-size:16px}
+.amt small{font-family:var(--body);font-weight:600;font-size:12px}
+.feed-foot{padding:10px 20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+@media (max-width:900px){.hero{grid-template-columns:1fr;gap:40px}}
+
+/* Cards / grids */
+.grid{display:grid;gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px;box-shadow:var(--shadow)}
+.card h3{font-size:21px;margin-bottom:8px}
+.card p{color:var(--muted)}
+
+/* About */
+.about{display:grid;grid-template-columns:1.3fr 1fr;gap:28px}
+.about p+p{margin-top:14px}
+.about p{color:var(--muted)}
+dl{display:grid;gap:16px}
+dt{font-size:14px;color:var(--muted)}
+dd{font-weight:600;margin-top:2px;margin-left:0}
+@media (max-width:800px){.about{grid-template-columns:1fr}}
+
+/* Skills */
+.skills{grid-template-columns:repeat(3,1fr)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.chip{padding:8px 14px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:600;font-size:15px;transition:transform .2s}
+.chip:hover{transform:translateY(-3px)}
+@media (max-width:900px){.skills{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.skills{grid-template-columns:1fr}}
+
+/* Education timeline */
+.timeline{position:relative;padding-left:32px;max-width:720px}
+.timeline::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.timeline::after{content:"";position:absolute;left:8px;top:6px;width:2px;height:var(--prog,0%);background:var(--accent);transition:height .9s ease}
+.dot{position:absolute;left:-32px;top:30px;width:18px;height:18px;border-radius:50%;background:var(--bg);border:3px solid var(--accent)}
+.timeline .card{position:relative}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.meta span{font-size:14px;font-weight:600;padding:5px 12px;border-radius:8px;background:var(--bg);border:1px solid var(--line)}
+
+/* Projects */
+.project{display:grid;grid-template-columns:1.1fr 1fr;gap:0;padding:0;overflow:hidden}
+.project .body{padding:36px}
+.project h3{font-size:28px}
+.points{list-style:none;padding:0;margin:18px 0 22px;display:grid;gap:10px}
+.points li{display:flex;gap:10px;color:var(--muted)}
+.points li::before{content:"✓";color:var(--safe);font-weight:700}
+.flow{background:var(--accent-soft);padding:36px;display:flex;flex-direction:column;justify-content:center;gap:0}
+.step{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-weight:600}
+.step b{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-size:14px;flex:none}
+.step.flag{border-color:var(--risk)}
+.step.flag b{background:var(--risk);color:#fff}
+.link{display:block;width:2px;height:16px;background:var(--accent);margin-left:31px;opacity:.5}
+@media (max-width:860px){.project{grid-template-columns:1fr}.project .body,.flow{padding:26px}}
+
+/* Certifications */
+.certs{grid-template-columns:repeat(auto-fit,minmax(260px,360px))}
+.cert-ic{width:48px;height:48px;border-radius:14px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-size:24px;margin-bottom:16px}
+
+/* Resume */
+.resume{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center}
+.resume ul{list-style:none;padding:0;margin-top:14px;display:grid;gap:6px;color:var(--muted)}
+.resume ul b{color:var(--ink);font-weight:600}
+@media (max-width:700px){.resume{grid-template-columns:1fr}}
+
+/* Contact */
+.contact{grid-template-columns:repeat(3,1fr)}
+.contact a.card{text-decoration:none;transition:transform .25s,border-color .25s}
+.contact a.card:hover{transform:translateY(-6px);border-color:var(--accent)}
+.contact .big{font-family:var(--head);font-weight:700;font-size:20px;color:var(--ink);margin-top:6px;word-break:break-word}
+.c-ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:22px;margin-bottom:14px;background:var(--accent-soft)}
+.c-ic.wa{background:var(--safe-soft)}
+@media (max-width:900px){.contact{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.contact{grid-template-columns:1fr}}
+
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:15px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:12px;font-size:15px;opacity:0;pointer-events:none;transition:.3s;z-index:99;max-width:calc(100% - 40px)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+.grid>.reveal:nth-child(2){transition-delay:.1s}.grid>.reveal:nth-child(3){transition-delay:.2s}
+
+@media (max-width:600px){section{padding:72px 0}#home{padding-top:44px}.card{padding:22px}.counts{display:none}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#home" aria-label="Atif Ahmad Khan, home"><i>AK</i>Atif Ahmad Khan</a>
+    <nav id="nav" aria-label="Main">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About me</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="tools">
+      <button class="icon-btn" id="themeBtn" aria-label="Switch light or dark theme">☾</button>
+      <button class="icon-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- HOME -->
+<section id="home">
+  <div class="wrap hero">
+    <div>
+      <div class="me">
+        <div class="avatar">
+          <img src="phpto.jpeg" width="30%" height="30%"/>
+        </div>
+        <div class="status"><b></b>Open to fresher roles</div>
+      </div>
+      <h1>Hi, I'm Atif Ahmad Khan</h1>
+      <div class="role" aria-live="polite"><span id="role">Python Developer</span></div>
+      <p class="about-line">Computer Science engineering student who builds clean web interfaces and data-driven Python projects, including a system that spots fraudulent UPI payments as they happen.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">View my project</a>
+        <a class="btn ghost" href="#contact">Contact me</a>
+      </div>
+    </div>
+
+    <div class="feed" aria-label="Simulated demo of real-time UPI fraud detection">
+      <div class="feed-head">
+        <div>Live payment monitor<small>Simulated demo of my project</small></div>
+        <div class="counts"><span>Checked <b id="cChecked">0</b></span><span>Flagged <em id="cFlag">0</em></span></div>
+      </div>
+      <ul class="rows" id="rows"></ul>
+      <div class="feed-foot">Sample data only. No real transactions are shown.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <h2 class="reveal">About me</h2>
+    <p class="lead reveal">A student who likes turning ideas into working software.</p>
+    <div class="grid about">
+      <div class="card reveal">
+        <p>I'm a Computer Science &amp; Engineering student at Prof Ram Meghe College of Engineering &amp; Management, Badnera-Amravati.</p>
+        <p>I work with Python and SQL for data and backend logic, and with HTML, CSS, JavaScript and React for the parts people see and touch.</p>
+        <p>My main project detects suspicious UPI transactions in real time. I'm now looking for my first role as a Python, Frontend or Full Stack Developer, where I can learn from a team and ship real features.</p>
+      </div>
+      <div class="card reveal">
+        <dl>
+          <div><dt>Degree</dt><dd>B.E. (Bachelor of Engineering)</dd></div>
+          <div><dt>Branch</dt><dd>Computer Science &amp; Engineering</dd></div>
+          <div><dt>Looking for</dt><dd>Python / Frontend / Full Stack Developer</dd></div>
+          <div><dt>Based in</dt><dd>Amravati, Maharashtra</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <h2 class="reveal">Skills</h2>
+    <p class="lead reveal">The tools I use to build and test my projects.</p>
+    <div class="grid skills">
+      <div class="card reveal">
+        <h3>Programming</h3><p>Logic, data handling and backend work.</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">JavaScript</span></div>
+      </div>
+      <div class="card reveal">
+        <h3>Frontend</h3><p>Responsive, accessible interfaces.</p>
+        <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">React</span></div>
+      </div>
+      <div class="card reveal">
+        <h3>Data</h3><p>Working with data to find patterns.</p>
+        <div class="chips"><span class="chip">Data Science</span><span class="chip">SQL</span><span class="chip">Python</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="wrap">
+    <h2 class="reveal">Education</h2>
+    <p class="lead reveal">My academic path so far.</p>
+    <div class="timeline" id="timeline">
+      <div class="card reveal">
+        <span class="dot"></span>
+        <h3>Bachelor of Engineering (B.E.)</h3>
+        <p>Computer Science &amp; Engineering<br>Prof Ram Meghe College of Engineering &amp; Management, Badnera-Amravati</p>
+        <div class="meta"><span>Currently pursuing</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <h2 class="reveal">Projects</h2>
+    <p class="lead reveal">Hands-on work that shows how I think and build.</p>
+    <article class="card project reveal">
+      <div class="body">
+        <h3>UPI Fraud Detection (real time)</h3>
+        <p>A system that checks UPI payments as they arrive and flags the ones that look suspicious, so they can be reviewed before money is lost.</p>
+        <ul class="points">
+          <li>Checks each transaction the moment it happens</li>
+          <li>Flags unusual amounts, new payees and rapid repeats</li>
+          <li>Built with Python and data science techniques</li>
+        </ul>
+        <div class="chips"><span class="chip">Python</span><span class="chip">Data Science</span><span class="chip">Real-time</span></div>
+      </div>
+      <div class="flow" aria-label="How the detection flow works">
+        <div class="step"><b>1</b>Transaction arrives</div><span class="link"></span>
+        <div class="step"><b>2</b>Features are extracted</div><span class="link"></span>
+        <div class="step"><b>3</b>Risk is scored</div><span class="link"></span>
+        <div class="step flag"><b>!</b>Suspicious payments flagged</div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="wrap">
+    <h2 class="reveal">Certifications</h2>
+    <p class="lead reveal">Extra learning beyond the classroom.</p>
+    <div class="grid certs">
+      <div class="card reveal">
+        <div class="cert-ic">🎓</div>
+        <h3>Data Science</h3>
+        <p>Certification covering data analysis and the foundations of data science.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESUME -->
+<section id="resume">
+  <div class="wrap">
+    <h2 class="reveal">Resume</h2>
+    <p class="lead reveal">A one-page summary you can keep.</p>
+    <div class="card resume reveal">
+      <div>
+        <h3>Atif Ahmad Khan</h3>
+        <p>B.E. Computer Science &amp; Engineering, fresher</p>
+        <ul>
+          <li><b>Skills:</b> Python, HTML, CSS, JavaScript, React, SQL</li>
+          <li><b>Project:</b> UPI Fraud Detection (real time)</li>
+          <li><b>Certification:</b> Data Science</li>
+          <li><b>Goal:</b> Python / Frontend / Full Stack Developer</li>
+        </ul>
+      </div>
+      <button class="btn primary" id="resumeBtn">Download resume (PDF)</button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <h2 class="reveal">Contact</h2>
+    <p class="lead reveal">The quickest way to reach me is WhatsApp.</p>
+    <div class="grid contact">
+      <a class="card reveal" href="https://wa.me/919637925344" target="_blank" rel="noopener">
+        <div class="c-ic wa">💬</div><p>WhatsApp</p><div class="big">+91 96379 25344</div>
+      </a>
+      <a class="card reveal" href="tel:+919637925344">
+        <div class="c-ic">📞</div><p>Phone</p><div class="big">+91 96379 25344</div>
+      </a>
+      <div class="card reveal">
+        <div class="c-ic">📍</div><p>Location</p><div class="big">Amravati, Maharashtra, India</div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© <span id="yr"></span> Atif Ahmad Khan</span><span>Built with HTML, CSS and JavaScript</span></div></footer>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+  var $=function(s){return document.querySelector(s)};
+  var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  $("#yr").textContent=new Date().getFullYear();
+
+  /* Theme */
+  var root=document.documentElement,tb=$("#themeBtn");
+  function isDark(){return root.dataset.theme?root.dataset.theme==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches}
+  function icon(){tb.textContent=isDark()?"☀":"☾"}
+  try{var saved=localStorage.getItem("theme");if(saved)root.dataset.theme=saved}catch(e){}
+  icon();
+  tb.addEventListener("click",function(){
+    var next=isDark()?"light":"dark";root.dataset.theme=next;icon();
+    try{localStorage.setItem("theme",next)}catch(e){}
+  });
+
+  /* Mobile menu */
+  var nav=$("#nav"),mb=$("#menuBtn");
+  mb.addEventListener("click",function(){var o=nav.classList.toggle("open");mb.setAttribute("aria-expanded",o);mb.textContent=o?"✕":"☰"});
+  nav.addEventListener("click",function(e){if(e.target.tagName==="A"){nav.classList.remove("open");mb.setAttribute("aria-expanded","false");mb.textContent="☰"}});
+
+  /* Active link + reveal */
+  var links=[].slice.call(document.querySelectorAll("nav a"));
+  var secs=links.map(function(a){return document.getElementById(a.getAttribute("href").slice(1))});
+  if("IntersectionObserver" in window){
+    var so=new IntersectionObserver(function(en){en.forEach(function(e){
+      if(e.isIntersecting){links.forEach(function(a){a.classList.toggle("active",a.getAttribute("href")==="#"+e.target.id)})}
+    })},{rootMargin:"-45% 0px -50% 0px"});
+    secs.forEach(function(s){so.observe(s)});
+
+    var ro=new IntersectionObserver(function(en){en.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add("in");ro.unobserve(e.target);
+        if(e.target.closest("#timeline"))$("#timeline").style.setProperty("--prog","100%")}
+    })},{threshold:.15});
+    document.querySelectorAll(".reveal").forEach(function(el){ro.observe(el)});
+  }else{document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("in")})}
+
+  /* Rotating role */
+  var roles=["Python Developer","Frontend Developer","Full Stack Developer"],ri=0,rs=$("#role");
+  if(!reduce){setInterval(function(){
+    rs.classList.add("out");
+    setTimeout(function(){
+      ri=(ri+1)%roles.length;rs.textContent=roles[ri];
+      rs.classList.remove("out");rs.classList.add("in");
+      void rs.offsetWidth;rs.classList.remove("in");
+    },450);
+  },2600)}
+
+  /* Simulated UPI feed */
+  var good=[["Grocery store","Matches usual pattern",[120,950]],["Mobile recharge","Known payee, usual amount",[199,799]],["Electricity bill","Monthly recurring payment",[600,2400]],["Friend: Rohan","Known payee, usual amount",[100,1500]],["Food delivery","Matches usual pattern",[180,700]],["Metro card top-up","Known payee, usual amount",[200,500]]];
+  var bad=[["Unknown merchant","New payee + very high amount",[48000,95000]],["Payee: win-prize@upi","New payee, flagged pattern",[4999,9999]],["Repeated transfer","6 payments in 1 minute",[9000,19999]],["Late-night transfer","Unusual hour + new device",[25000,60000]]];
+  var rows=$("#rows"),checked=0,flagged=0,n=0;
+  function rnd(a,b){return Math.floor(a+Math.random()*(b-a))}
+  function fmt(v){return "₹"+v.toLocaleString("en-IN")}
+  function add(){
+    var isBad=(n%5===3)||(n>4&&Math.random()<.12);n++;
+    var list=isBad?bad:good,it=list[rnd(0,list.length)];
+    var li=document.createElement("li");li.className="tx"+(isBad?" bad":"");
+    li.innerHTML='<div class="tag">'+(isBad?"!":"✓")+'</div><div><strong></strong><small></small></div><div class="amt"></div>';
+    li.querySelector("strong").textContent=it[0];
+    li.querySelector("small").textContent=it[1];
+    var amt=li.querySelector(".amt");amt.textContent=fmt(rnd(it[2][0],it[2][1]));
+    var s=document.createElement("small");s.style.color=isBad?"var(--risk)":"var(--safe)";s.textContent=isBad?"Flagged":"Safe";amt.appendChild(s);
+    rows.insertBefore(li,rows.firstChild);
+    while(rows.children.length>6)rows.removeChild(rows.lastChild);
+    checked++;if(isBad)flagged++;
+    $("#cChecked").textContent=checked;$("#cFlag").textContent=flagged;
+  }
+  for(var i=0;i<4;i++)add();
+  setInterval(add,reduce?3200:1700);
+
+  /* Resume toast */
+  var t=$("#toast"),tt;
+  $("#resumeBtn").addEventListener("click",function(){
+    t.textContent="Add your resume.pdf file and link it here when you publish the site.";
+    t.classList.add("show");clearTimeout(tt);tt=setTimeout(function(){t.classList.remove("show")},3600);
+  });
+})();
+</script>
+</body>
+</html>
